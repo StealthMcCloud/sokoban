@@ -8,7 +8,7 @@ const map = [
     "WB XBBOW",
     "W   O  W",
     "WWWWWWWW"
-  ];
+];
 
 
 
@@ -40,26 +40,25 @@ for (let y = 0; y < map.length; y++) {
                 wall.classList.add("blankSpace");
                 wall.dataset.cellType = "floor";
                 break;
-            
+
             case "B":
-            wall.classList.add("box");
-            wall.dataset.cellType = "box";
-            break;
+                wall.classList.add("box");
+                wall.dataset.cellType = "box";
+                break;
 
             case "O":
-            wall.classList.add("winLocations");
-            wall.dataset.cellType = "winLocations";
-            break;
+                wall.classList.add("winLocations");
+                wall.dataset.cellType = "winLocations";
+                break;
 
             case "X":
-            wall.classList.add("box", "winLocations");
-            wall.dataset.cellType = "boxOnWinLocation";
-            break;
+                wall.classList.add("box" || "winLocations");
+                wall.dataset.cellType = "boxOnWinLocation";
+                break;
         }
     }
     main.appendChild(mazeBoard);
 }
-
 
 const rarity = document.getElementById("rarity")
 
@@ -68,51 +67,53 @@ let currentPosition = start;
 currentPosition.appendChild(rarity);
 
 
-
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'ArrowUp':
             let nextPositionUp = Number(currentPosition.dataset.rowIndex) - 1;
             let nextMoveUp = document.querySelector("[data-row-index = '" + nextPositionUp + "'][data-cell-index = '" + currentPosition.dataset.cellIndex + "']");
-            if (nextMoveUp.dataset.cellType === "floor") {
+            const moveUp = nextMoveUp.dataset.cellType
+            if (moveUp === "floor" || moveUp === "winLocations" || moveUp === "box" || moveUp === "start" || moveUp === "boxOnWinLocation") {
                 nextMoveUp.appendChild(rarity);
                 currentPosition = nextMoveUp;
-                rarity.style.transform = "rotate(-90deg)"
+                rarity.style.transform = "rotate(-90deg)" + "scaleX(-1)"
             }
             break;
         case 'ArrowDown':
             let nextPositionDown = Number(currentPosition.dataset.rowIndex) + 1;
             let nextMoveDown = document.querySelector("[data-row-index = '" + nextPositionDown + "'][data-cell-index = '" + currentPosition.dataset.cellIndex + "']");
-            if (nextMoveDown.dataset.cellType === "floor") {
+            const moveDown = nextMoveDown.dataset.cellType
+            if (moveDown === "floor" || moveDown === "winLocations" || moveDown === "box" || moveDown === "Start" || moveDown === "boxOnWinLocation") {
                 nextMoveDown.appendChild(rarity);
                 currentPosition = nextMoveDown;
-                rarity.style.transform = "rotate(90deg)"
+                rarity.style.transform = "rotate(90deg)" + "scaleX(-1)"
             }
             break;
         case 'ArrowLeft':
             let nextPositionLeft = Number(currentPosition.dataset.cellIndex) - 1;
             let nextMoveLeft = document.querySelector("[data-row-index = '" + currentPosition.dataset.rowIndex + "'][data-cell-index = '" + nextPositionLeft + "']");
-            if (nextMoveLeft.dataset.cellType === "floor") {
+            const moveLeft = nextMoveLeft.dataset.cellType
+            if (moveLeft === "floor" || moveLeft === "winLocations" || moveLeft === "box" || moveLeft === "start" || moveLeft === "boxOnWinLocation") {
                 nextMoveLeft.appendChild(rarity);
                 currentPosition = nextMoveLeft;
-                rarity.style.transform = "scaleX(-1)"
+                rarity.style.transform = "rotate(0deg)"
             }
             break;
         case 'ArrowRight':
             let nextPositionRight = Number(currentPosition.dataset.cellIndex) + 1;
             let nextMoveRight = document.querySelector("[data-row-index = '" + currentPosition.dataset.rowIndex + "'][data-cell-index = '" + nextPositionRight + "']");
-            if (nextMoveRight.dataset.cellType === "floor") {
+            const moveRight = nextMoveRight.dataset.cellType;
+            if (moveRight === "floor" || moveRight === "box" || moveRight === "start" || moveRight === "winLocations" || moveRight === "boxOnWinLocation") {
                 nextMoveRight.appendChild(rarity);
                 currentPosition = nextMoveRight;
-                rarity.style.transform = "rotate(0deg)"
-            } else if (nextMoveRight.dataset.cellType === "winLocations") {
-                nextMoveRight.appendChild(rarity);
-                currentPosition = nextMoveRight;
-                setTimeout(function () {
-                    alert("You Win!");
-                    
-                }, 1);
+                rarity.style.transform = "scaleX(-1)"}
+                else if (moveRight === "box") { 
+                    nextMoveRight.appendChild(rarity);
+                    nextMoveRight.appendChild(box)
+                    currentPosition = nextMoveRight;
+                    boxLocation = nextMoveRight;
             }
             break;
+        }
     }
-})
+)
