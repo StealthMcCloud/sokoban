@@ -1,20 +1,14 @@
-/* 
-Get an image of who is going to be moving through the maze to get to the finish
-Get a good background to be behind the maze
-
-*/
-
 h1 {
     text-align: center;
     font-size: 26px;
     color: darkblue;
 }
 
-#dashie {
+#rarity {
     width: 35px;
     height: 35px; 
     position: absolute;
-    background-image: url("Photos/Rainbow\ Dash.gif");
+    background-image: url("Photos/rarityWalking.gif");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     animation-duration: 100ms;
@@ -28,10 +22,10 @@ main {
     margin-right: auto;
     justify-content: center;
     align-items: center;
-    background-image: url("Photos/ponyville.png");
+    background-image: url("Photos/flooring.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 61.75% 100%;
+    background-size: 23% 100%;
 
 }
 
@@ -42,10 +36,7 @@ main {
 .borderWall {
     height: 35px;
     width: 35px;
-    background-image: url("Photos/stormClouds.gif");
-    background-repeat: no-repeat;
-    background-size: 35px 35px;
-    opacity: .5;
+    background-color: rgb(164, 141, 185);
 }
 
 #start {
@@ -58,16 +49,14 @@ main {
     width: 35px;
 }
 
-#finish {
+.box {
     height: 35px;
     width: 35px;
-    background-image: url("Photos/rainbowfinish.gif");
-    background-repeat: no-repeat;
+    background-image: url("Photos/Derpy\ Box.png");
     background-size: 100% 100%;
 }
 
-#winner {
-    background-image: url("Photos/Winner.gif");
-    height: auto;
-    width: auto;
+.winLocations {
+    height: 35px;
+    width: 35px;
 }
