@@ -1,0 +1,73 @@
+/* 
+Get an image of who is going to be moving through the maze to get to the finish
+Get a good background to be behind the maze
+
+*/
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    color: darkblue;
+}
+
+#dashie {
+    width: 35px;
+    height: 35px; 
+    position: absolute;
+    background-image: url("Photos/Rainbow\ Dash.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation-duration: 100ms;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    background-image: url("Photos/ponyville.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 61.75% 100%;
+
+}
+
+.mazeRow {
+    display: flex;
+    flex-direction: row;
+}
+.borderWall {
+    height: 35px;
+    width: 35px;
+    background-image: url("Photos/stormClouds.gif");
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    opacity: .5;
+}
+
+#start {
+    height: 35px;
+    width: 35px;
+}
+
+.blankSpace {
+    height: 35px;
+    width: 35px;
+}
+
+#finish {
+    height: 35px;
+    width: 35px;
+    background-image: url("Photos/rainbowfinish.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#winner {
+    background-image: url("Photos/Winner.gif");
+    height: auto;
+    width: auto;
+}
