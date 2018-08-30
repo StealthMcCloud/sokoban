@@ -16,6 +16,7 @@ h1 {
 
 
 main {
+    width: 280px;
     display: flex;
     flex-direction: column;
     margin-left: auto;
@@ -25,7 +26,7 @@ main {
     background-image: url("Photos/flooring.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 23% 100%;
+    background-size: 100% 100%;
 
 }
 
