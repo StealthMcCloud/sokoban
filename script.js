@@ -269,9 +269,6 @@ document.addEventListener('keydown', (event) => {
 
 function checkWin() {
     if (winCounter == 7) {
-        console.log("Winner")
-    }
-    else {
-        console.log("Loser")
+        setTimeout(function(){ alert("Winner"); }, 200);
     }
 }
