@@ -50,17 +50,23 @@ main {
     width: 35px;
 }
 
-.box {
-    height: 35px;
-    width: 35px;
-    background-image: url("Photos/Derpy\ Box.png");
-    background-size: 100% 100%;
-}
-
 .winLocations {
     height: 35px;
     width: 35px;
     background: red;
     opacity: .25;
     border-radius: 50%;
+}
+
+.box {
+    height: 35px;
+    width: 35px;
+    background-image: url("Photos/Derpy\ Box.png");
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+.boxOnWinLocation {
+    height: 35px;
+    width: 35px;
 }
