@@ -136,6 +136,18 @@ document.addEventListener('keydown', (event) => {
                 winCounter++;
                 boxMoveUp.classList.add("box")
             }
+
+            else if (moveUp === "boxOnWinLocation") {
+                nextMoveUp.classList.replace("box", "winLocations");
+                nextMoveUp.setAttribute("data-cell-type", "winLocations");
+                nextMoveUp.appendChild(rarity);
+                currentPosition = nextMoveUp;
+                rarity.style.transform = "scaleX(-1)";
+                boxMoveUp.setAttribute("data-cell-type", "box");
+                winCounter--;
+                boxMoveUp.classList.replace("blankSpace", "box");
+            }
+
             else if (moveUp === "box") {
                 upMove(nextMoveUp, boxMoveUp)
                 boxMoveUp.setAttribute("data-cell-type", "box");
@@ -157,7 +169,7 @@ document.addEventListener('keydown', (event) => {
                 rarity.style.transform = "rotate(90deg)" + "scaleX(-1)"
             }
 
-            else if (moveDown === "box" && boxDown === "borderWall" || moveDown === "box" && boxDown === "box") {
+            else if (moveDown === "box" && boxDown === "borderWall" || moveDown === "box" && boxDown === "box" || moveDown === "boxOnWinLocation" && boxDown === "box" || moveDown === "boxOnWinLocation" && boxDown === "borderWall") {
             }
 
             else if (boxDown === "winLocations") {
@@ -169,6 +181,17 @@ document.addEventListener('keydown', (event) => {
                 boxMoveDown.setAttribute("data-cell-type", "boxOnWinLocation");
                 winCounter++;
                 boxMoveDown.classList.add("box")
+            }
+
+            else if (moveDown === "boxOnWinLocation") {
+                nextMoveDown.classList.replace("box", "winLocations");
+                nextMoveDown.setAttribute("data-cell-type", "winLocations");
+                nextMoveDown.appendChild(rarity);
+                currentPosition = nextMoveDown;
+                rarity.style.transform = "scaleX(-1)";
+                boxMoveDown.setAttribute("data-cell-type", "box");
+                winCounter--;
+                boxMoveDown.classList.replace("blankSpace", "box");
             }
 
             else if (moveDown === "box") {
@@ -206,6 +229,9 @@ document.addEventListener('keydown', (event) => {
                 boxMoveLeft.classList.add("box")
             }
 
+            else if (moveLeft === "box" && boxLeft === "borderWall" || moveLeft === "box" && boxLeft === "boxOnWinLocation") {
+            }
+
             else if (boxLeft === "start") {
                 leftMove(nextMoveLeft, boxMoveLeft)
                 document.getElementById("start").removeAttribute("id");
@@ -231,6 +257,7 @@ document.addEventListener('keydown', (event) => {
             }
             checkWin();
             break;
+
         //moves player right and pushes boxes
         case 'ArrowRight':
             let nextPositionRight = Number(cellPosition) + 1;
@@ -244,7 +271,7 @@ document.addEventListener('keydown', (event) => {
                 currentPosition = nextMoveRight;
                 rarity.style.transform = "scaleX(-1)"
             }
-            else if (moveRight === "box" && boxRight === "borderWall" || moveRight === "box" && boxRight === "box") {
+            else if (moveRight === "box" && boxRight === "borderWall" || moveRight === "box" && boxRight === "box" || moveRight === "boxOnWinLocation" && boxRight === "borderWall") {
             }
 
             else if (boxRight === "winLocations") {
@@ -256,6 +283,17 @@ document.addEventListener('keydown', (event) => {
                 boxMoveRight.setAttribute("data-cell-type", "boxOnWinLocation");
                 winCounter++;
                 boxMoveRight.classList.add("box")
+            }
+
+            else if (moveRight === "boxOnWinLocation") {
+                nextMoveRight.classList.replace("box", "winLocations");
+                nextMoveRight.setAttribute("data-cell-type", "winLocations");
+                nextMoveRight.appendChild(rarity);
+                currentPosition = nextMoveRight;
+                rarity.style.transform = "scaleX(-1)";
+                boxMoveRight.setAttribute("data-cell-type", "box");
+                winCounter--;
+                boxMoveRight.classList.replace("blankSpace", "box");
             }
 
             else if (moveRight === "box") {
@@ -272,3 +310,4 @@ function checkWin() {
         setTimeout(function(){ alert("Winner"); }, 200);
     }
 }
+console.log(winCounter)
